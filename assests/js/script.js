@@ -56,7 +56,6 @@ var currentQuestion = 0;
 // creating function that loads quiz data into page.
 
 
-
 var loadQuiz = function () {
     var currentQuizQuestion = quizData[currentQuestion];
 
@@ -70,19 +69,37 @@ var loadQuiz = function () {
     
 }
 
+//TODO Start quiz function
+// loadQuiz();
 
-loadQuiz();
+//Timer (needs to be part of start quiz function)
 
+var count = 75
+var counter = setInterval(timer, 1000);
+function timer () {
+    count = count-1;
+    if (count <=0)
+    {
+        clearInterval(counter);
+        return;
+    }
+    document.getElementById("timer").innerText = "Time: " + count;
+}
 answers.forEach(answers => {
         answers.addEventListener('click', function(e) {
        
-        
+        //get answer value
         var chosenAnswer = e.currentTarget.getAttribute('value');
         console.log(chosenAnswer);
         console.log(quizData[currentQuestion].correct);
+        //correct answer add 10 points
         if(chosenAnswer === quizData[currentQuestion].correct){
         score+=10;
-        } else {
+        } 
+        //incorrect answer deduct 10 points
+        //deduct time from timer
+        else {
+            count=count-10;
             if (score > 10) {
                 score -= 10;
             }else {
@@ -96,7 +113,7 @@ answers.forEach(answers => {
             loadQuiz();
 
              };
-             //else endgame function
+             //TODO else endgame function
          
     })});
 

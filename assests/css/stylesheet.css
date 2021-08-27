@@ -39,6 +39,7 @@ margin-right: 5px;
 text-align: center;
 width: 50%;
 border-radius: 5px;
+display: none;
 }
 
 button {
@@ -52,4 +53,17 @@ button {
 
 button:hover{
     background-color: purple;
+}
+
+#start {
+    margin: 0 auto;
+    display: block;
+}
+
+p {
+    text-align: center;
+    margin-right: 100px;
+    margin-left: 100px;
+
+
 }
