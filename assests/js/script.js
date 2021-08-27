@@ -52,7 +52,7 @@ var d_text = document.getElementById("d_text");
 //indexing
 var currentQuestion = 0;
 
-
+var answerList = document.querySelectorAll(".answer");
 // creating function that loads quiz data into page.
 
 
@@ -71,6 +71,17 @@ var loadQuiz = function () {
     currentQuestion++;
    
 }
+
+
 loadQuiz();
 
-document.getElementById("answer").addEventListener("click", loadQuiz);
+document.querySelector(".answer").addEventListener("click", function() {
+    
+  
+
+    if (currentQuestion < quizData.length) {
+        
+        loadQuiz();
+        console.log(answer);
+    }
+});
