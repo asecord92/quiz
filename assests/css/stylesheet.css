@@ -2,6 +2,7 @@ body {
     width: 100%;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     box-sizing: border-box;
+    padding: 2px;
 }
 
 #nav {
@@ -31,12 +32,24 @@ h2 {
     text-align: center;
 }
 li {
-background-color: rgb(160, 105, 160);
-color: white;
+
 margin-top: 10px;
 margin-bottom: 10px;
 margin-right: 5px;
 text-align: center;
 width: 50%;
+border-radius: 5px;
 }
 
+button {
+    background-color: rgb(160, 105, 160);
+    color: white;
+    font-size: 24px;
+    box-shadow: none;
+    border: 0;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: purple;
+}

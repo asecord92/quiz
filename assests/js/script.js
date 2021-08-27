@@ -40,7 +40,8 @@ quizData = [
         correct:"d",
     }
 ]
-
+var answers = document.querySelectorAll(".btn")
+var score = 0
 //Variables defined to pull questions data
 
 var questionEl = document.getElementById("question");
@@ -52,7 +53,6 @@ var d_text = document.getElementById("d_text");
 //indexing
 var currentQuestion = 0;
 
-var answerList = document.querySelectorAll(".answer");
 // creating function that loads quiz data into page.
 
 
@@ -67,21 +67,49 @@ var loadQuiz = function () {
     c_text.innerText = currentQuizQuestion.c
     d_text.innerText = currentQuizQuestion.d
 
-
-    currentQuestion++;
-   
+    
 }
 
 
 loadQuiz();
 
-document.querySelector(".answer").addEventListener("click", function() {
-    
-  
-
-    if (currentQuestion < quizData.length) {
+answers.forEach(answers => {
+        answers.addEventListener('click', function(e) {
+       
         
-        loadQuiz();
-        console.log(answer);
-    }
-});
+        var chosenAnswer = e.currentTarget.getAttribute('value');
+        console.log(chosenAnswer);
+        console.log(quizData[currentQuestion].correct);
+        if(chosenAnswer === quizData[currentQuestion].correct){
+        score+=10;
+        } else {
+            if (score > 10) {
+                score -= 10;
+            }else {
+                score = 0;
+            }
+        }
+        currentQuestion++;
+        console.log(score);
+        if(currentQuestion < quizData.length) {
+          
+            loadQuiz();
+
+             };
+             //else endgame function
+         
+    })});
+
+    
+    
+    
+
+
+
+
+
+
+
+
+
+

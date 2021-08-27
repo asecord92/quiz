@@ -7,29 +7,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quiz
     </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
     <header id="nav">
             <div class="high-score">View Your High Score</div>
             <div class="timer">Time: 0</div>
     </header>
+    <div id="welcome">
+        <h2></h2>
+        <p>.</p>
+        
+    </div>
     <div class="container">
-        <h2 id="question">Question</h2>
-        <ul class="answer">
-            <li id="a_text">
-                answer
-            </li>
-            <li id="b_text">
-                answer
-            </li>
-            <li id="c_text">
-                answer
-            </li>
-            <li  id="d_text">
-                answer
-            </li>
+        <h2 id="question"></h2>
+        <ul id="answers">
+            <li> <button class="btn" type="button" value="a" id="a_text"></button>
+            <li> <button class="btn" type="button" value="b" id="b_text"></button>
+            <li> <button class="btn" type="button" value="c" id="c_text"></button> 
+            <li> <button class="btn" type="button" value="d" id="d_text"></button>   
+           
         </ul>
     </div>
     <script src="./assests/js/script.js"></script>
+    
 </body>
 </html>
