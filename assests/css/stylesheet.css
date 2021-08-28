@@ -2,7 +2,7 @@ body {
     width: 100%;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     box-sizing: border-box;
-    padding: 2px;
+    padding: 15px;
 }
 
 #nav {
@@ -12,7 +12,7 @@ body {
 
 }
 
-.container {
+#container {
    display: flex;
    flex-direction: column;
    flex-wrap: wrap;
@@ -22,14 +22,12 @@ body {
    margin-top: 10px;
 }
 
-ul {
+#answers {
     list-style: none;
     margin-left: -15px;
     margin-right: 10px;
+    display: none;
    
-}
-h2 {
-    text-align: center;
 }
 li {
 
@@ -37,10 +35,11 @@ margin-top: 10px;
 margin-bottom: 10px;
 margin-right: 5px;
 text-align: center;
-width: 50%;
-border-radius: 5px;
-display: none;
+width: 100%;
+
 }
+
+
 
 button {
     background-color: rgb(160, 105, 160);
@@ -48,22 +47,30 @@ button {
     font-size: 24px;
     box-shadow: none;
     border: 0;
+    border-radius: 5px;
     cursor: pointer;
 }
 
 button:hover{
     background-color: purple;
 }
-
+#welcome {
+    display: block;
+    text-align: center;
+    margin-right: 100px;
+    margin-left: 100px;
+}
 #start {
     margin: 0 auto;
     display: block;
 }
 
-p {
-    text-align: center;
-    margin-right: 100px;
-    margin-left: 100px;
+#form {
+    display:none;
+    flex-direction: column;
+    align-items: center;
+}
 
-
+form {
+    margin-bottom: 4px;
 }

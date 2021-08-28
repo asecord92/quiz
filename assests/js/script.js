@@ -42,6 +42,14 @@ quizData = [
 ]
 var answers = document.querySelectorAll(".btn")
 var score = 0
+var welcomeEl = document.getElementById("welcome")
+var startEl = document.getElementById("start")
+var list = document.getElementById("answers")
+var form = document.getElementById("form")
+var nav = document.getElementById("nav")
+var container = document.getElementById("container")
+var count = 50
+var sumbitBtn = document.getElementById("submit")
 //Variables defined to pull questions data
 
 var questionEl = document.getElementById("question");
@@ -52,6 +60,23 @@ var d_text = document.getElementById("d_text");
 
 //indexing
 var currentQuestion = 0;
+
+var hideElement = function(element) {
+    if(element.style.display == "none"){
+        element.style.display = "block"
+    }
+    else {
+        element.style.display = "none"
+    }
+}
+var showElement = function(element) {
+    if(element.style.display == "block"){
+        element.style.display = "none"
+    }
+    else {
+        element.style.display = "block"
+    }
+}
 
 // creating function that loads quiz data into page.
 
@@ -70,21 +95,46 @@ var loadQuiz = function () {
 }
 
 //TODO Start quiz function
-// loadQuiz();
 
-//Timer (needs to be part of start quiz function)
-
-var count = 75
+var startQuiz = function() {
+    //remove welcome div
+    hideElement(welcomeEl);
+    //load quiz data
+    loadQuiz();
+    //start timer
 var counter = setInterval(timer, 1000);
 function timer () {
     count = count-1;
-    if (count <=0)
+    if (count <0)
     {
         clearInterval(counter);
         return;
     }
     document.getElementById("timer").innerText = "Time: " + count;
 }
+showElement(list);
+}
+//End quiz function
+
+var endQuiz = function() {
+    hideElement(container);
+    hideElement(nav);
+    if(form.style.display == "flex"){
+        form.style.display = "none"
+    }
+    else {
+        form.style.display = "flex"
+    }
+    var endHeader = document.createElement("h2");
+    endHeader.innerHTML = "All Done!";
+    var finalScore = document.createElement("p");
+    finalScore.innerHTML ="Your Final Score is " + score
+    form.prepend(endHeader, finalScore)
+    
+}
+
+
+
 answers.forEach(answers => {
         answers.addEventListener('click', function(e) {
        
@@ -92,6 +142,9 @@ answers.forEach(answers => {
         var chosenAnswer = e.currentTarget.getAttribute('value');
         console.log(chosenAnswer);
         console.log(quizData[currentQuestion].correct);
+        if(currentQuestion === quizData.length -1 || count <=0){
+            endQuiz();
+        }else {
         //correct answer add 10 points
         if(chosenAnswer === quizData[currentQuestion].correct){
         score+=10;
@@ -107,23 +160,31 @@ answers.forEach(answers => {
             }
         }
         currentQuestion++;
+        loadQuiz();
         console.log(score);
-        if(currentQuestion < quizData.length) {
-          
-            loadQuiz();
-
-             };
-             //TODO else endgame function
+    };
          
     })});
 
-    
-    
-    
+startEl.addEventListener("click", startQuiz);   
+    //for loop
+
+//     innerText= highScoresArr[i].score + 
+// //append
+
+// var highScore = {Score: score,Initials://value };
+// //check if array is in local storage
+// var highScoresArr = JSON.parse(localStorage.getItem("highscores")) || []
 
 
+// highScoresArr.push(highScore)
+// localStorage.setItem("highscores",
 
+sumbitBtn.addEventListener("click", function(){
+    var initials = document.getElementById("initials").value;
+    console.log(initials)
 
+})
 
 
 
