@@ -112,7 +112,7 @@ function timer () {
     if (count <0)
     {
         clearInterval(counter);
-        return;
+        endQuiz();
     }
     document.getElementById("timer").innerText = "Time: " + count;
 }
@@ -144,9 +144,7 @@ answers.forEach(answers => {
        
         //get answer value
         var chosenAnswer = e.currentTarget.getAttribute('value');
-        console.log(chosenAnswer);
-        console.log(quizData[currentQuestion].correct);
-        if(currentQuestion === quizData.length - 1 || count <=0){
+        if(currentQuestion === quizData.length - 1){
             endQuiz();
         }else {
         //correct answer add 10 points
