@@ -13,7 +13,7 @@ quizData = [
         b:"Portland",
         c:"Santa Cruz",
         d:"San Diego",
-        correct: "a",
+        correct: "a"
     },
     {
         question: "What is my favorite sport to watch?",
@@ -21,7 +21,7 @@ quizData = [
         b:"Golf",
         c:"Football",
         d:"Soccer",
-        correct:"c",
+        correct:"c"
     },
     {
         question:"What is my favorite sport to play",
@@ -29,7 +29,7 @@ quizData = [
         b:"Football",
         c:"Soccer",
         d:"Beer Olympics",
-        correct:"a",
+        correct:"a"
     },
     {
         question: "Did I run out of questions?",
@@ -37,7 +37,7 @@ quizData = [
         b:"No",
         c:"Obviously",
         d:"Both A and C",
-        correct:"d",
+        correct:"d"
     }
 ]
 var answers = document.querySelectorAll(".btn")
@@ -50,6 +50,10 @@ var nav = document.getElementById("nav")
 var container = document.getElementById("container")
 var count = 50
 var sumbitBtn = document.getElementById("submit")
+var scoreBtns = document.getElementById("highscores")
+var reset = document.getElementById("reset")
+var clearScores = document.getElementById("clear");
+var hsList = document.getElementById("hsList")
 //Variables defined to pull questions data
 
 var questionEl = document.getElementById("question");
@@ -142,7 +146,7 @@ answers.forEach(answers => {
         var chosenAnswer = e.currentTarget.getAttribute('value');
         console.log(chosenAnswer);
         console.log(quizData[currentQuestion].correct);
-        if(currentQuestion === quizData.length -1 || count <=0){
+        if(currentQuestion === quizData.length - 1 || count <=0){
             endQuiz();
         }else {
         //correct answer add 10 points
@@ -160,30 +164,67 @@ answers.forEach(answers => {
             }
         }
         currentQuestion++;
+
         loadQuiz();
         console.log(score);
     };
          
     })});
+//Start Quiz button
 
 startEl.addEventListener("click", startQuiz);   
-    //for loop
 
-//     innerText= highScoresArr[i].score + 
-// //append
-
-// var highScore = {Score: score,Initials://value };
-// //check if array is in local storage
-// var highScoresArr = JSON.parse(localStorage.getItem("highscores")) || []
-
-
-// highScoresArr.push(highScore)
-// localStorage.setItem("highscores",
-
+//Submit High Score logic
 sumbitBtn.addEventListener("click", function(){
     var initials = document.getElementById("initials").value;
-    console.log(initials)
+    if( initials === "") {
+        return
+    }else {
+    //store scores in localStorage
+    var highScore = {Score: score, Initials: initials};
+    var highScoresArr = JSON.parse(localStorage.getItem("High Score")) || []
 
+    highScoresArr.push(highScore);
+    console.log(highScoresArr)
+    localStorage.setItem("High Score", JSON.stringify(highScoresArr))
+    if(form.style.display == "none"){
+        form.style.display = "flex"
+    }
+    else {
+        form.style.display = "none"
+    }
+    if(scoreBtns.style.display == "flex"){
+        scoreBtns.style.display = "none"
+    }
+    else {
+        scoreBtns.style.display = "flex"
+    }
+      //display scores
+        for(var i = 0; i< highScoresArr.length; i++){
+            var displayScore = JSON.parse(localStorage.getItem(("High Score")))
+            displayScore = highScoresArr[i];
+            console.log(typeof(displayScore));
+             var data = document.createElement("li")
+             data.innerHTML = displayScore.Initials + ".........................." + displayScore.Score; 
+             
+             hsList.appendChild(data)
+
+            
+         }
+}
+})
+
+//reset button click logic
+reset.addEventListener("click", function() {
+    location.reload();
+})
+//clear button click logic
+
+clearScores.addEventListener("click", function(){
+    localStorage.clear();
+    hsList.remove();
+
+    //clear text on page
 })
 
 

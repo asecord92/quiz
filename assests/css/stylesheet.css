@@ -55,6 +55,7 @@ button:hover{
     background-color: purple;
 }
 #welcome {
+    /*change back to block */
     display: block;
     text-align: center;
     margin-right: 100px;
@@ -73,4 +74,31 @@ button:hover{
 
 form {
     margin-bottom: 4px;
+}
+
+#highscores {
+    /*change back to none*/
+    display: none;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+#highscores button {
+    margin: 5px;
+
+}
+#highscores h2 {
+    text-indent: 31%;
+}
+#hsContainer {
+    display: block;
+    flex-direction: column;
+    width: 100%;
+}
+
+#hsList {
+    list-style: none;
+    font-weight: bold;
+    word-spacing: 100px;
+    width: 75%;
+    text-align: center;
 }
