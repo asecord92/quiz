@@ -87,13 +87,13 @@ var showElement = function(element) {
 
 var loadQuiz = function () {
     var currentQuizQuestion = quizData[currentQuestion];
-
     questionEl.innerText = currentQuizQuestion.question
 
     a_text.innerText = currentQuizQuestion.a
     b_text.innerText = currentQuizQuestion.b
     c_text.innerText = currentQuizQuestion.c
     d_text.innerText = currentQuizQuestion.d
+
 
     
 }
@@ -109,7 +109,7 @@ var startQuiz = function() {
 var counter = setInterval(timer, 1000);
 function timer () {
     count = count-1;
-    if (count <0)
+    if (count <= 0)
     {
         clearInterval(counter);
         endQuiz();
@@ -164,7 +164,6 @@ answers.forEach(answers => {
         currentQuestion++;
 
         loadQuiz();
-        console.log(score);
     };
          
     })});
@@ -183,7 +182,6 @@ sumbitBtn.addEventListener("click", function(){
     var highScoresArr = JSON.parse(localStorage.getItem("High Score")) || []
 
     highScoresArr.push(highScore);
-    console.log(highScoresArr)
     localStorage.setItem("High Score", JSON.stringify(highScoresArr))
     if(form.style.display == "none"){
         form.style.display = "flex"
@@ -201,7 +199,6 @@ sumbitBtn.addEventListener("click", function(){
         for(var i = 0; i< highScoresArr.length; i++){
             var displayScore = JSON.parse(localStorage.getItem(("High Score")))
             displayScore = highScoresArr[i];
-            console.log(typeof(displayScore));
              var data = document.createElement("li")
              data.innerHTML = displayScore.Initials + ".........................." + displayScore.Score; 
              
